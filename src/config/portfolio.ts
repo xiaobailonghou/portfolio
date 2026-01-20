@@ -23,7 +23,7 @@ export const portfolioConfig = {
   // 统计数据
   stats: {
     experience: '1年+', // 实习经验
-    projects: 4, // 项目数量
+    projects: 8, // 项目数量
     articles: 3, // 技术文章数量
   },
 
