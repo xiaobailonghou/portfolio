@@ -15,19 +15,15 @@ export default function Projects() {
               className="bg-slate-800/50 rounded-xl overflow-hidden shadow-xl border border-slate-700/50 hover:border-blue-500/50 transition-all hover:transform hover:scale-105"
             >
               {/* 项目图片/截图 */}
-              <div className="relative h-48 bg-gradient-to-br from-blue-600/20 to-purple-600/20 flex items-center justify-center overflow-hidden">
-                {project.image ? (
+              {project.image && (
+                <div className="relative h-48 overflow-hidden">
                   <img
                     src={project.image}
                     alt={project.name}
                     className="w-full h-full object-cover"
                   />
-                ) : (
-                  <div className="text-6xl text-blue-400/30">
-                    {project.name.charAt(0)}
-                  </div>
-                )}
-              </div>
+                </div>
+              )}
               
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-white mb-2">

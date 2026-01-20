@@ -6,7 +6,7 @@ export default function Resume() {
   const handleDownload = () => {
     const link = document.createElement('a')
     link.href = portfolioConfig.resumePdfUrl
-    link.download = '简历.pdf'
+    link.download = '后端开发-郑怀荣-13417191284.pdf'
     link.click()
   }
 
@@ -52,8 +52,8 @@ export default function Resume() {
           {/* 简历预览区域 */}
           <div className="mt-8 border-t border-slate-700/50 pt-8">
             <iframe
-              src={portfolioConfig.resumePdfUrl}
-              className="w-full h-[600px] rounded-lg bg-white"
+              src={`${portfolioConfig.resumePdfUrl}#view=FitH`}
+              className="w-full h-[600px] rounded-lg bg-white border border-slate-600"
               title="简历预览"
             />
           </div>
