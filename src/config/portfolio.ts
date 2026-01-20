@@ -14,9 +14,9 @@ export const portfolioConfig = {
   // 关于我（详细介绍）
   about: `我是深圳技术大学计算机科学与技术专业的应届本科生，目前正在积极寻找春季校招的后端开发岗位。
 
-在过去的实习经历中，我在新产业生物医疗（上市公司）和深德信安科技担任后端研发工程师，积累了丰富的实际项目经验。我主导设计并实现了主优设计受史管理系统，优化系统性能处理高并发场景（24K条并发+14K条×5流程通道）。在工作中，我深入研究 Spring Boot、MyBatis-Plus、MySQL 主从复制等技术，并成功解决了分布式事务、性能优化、多数据源管理等实际问题。
+在过去的实习经历中，我在新产业生物医疗（上市公司）和深密信安科技担任后端研发工程师，积累了丰富的实际项目经验。我主导设计并实现了生化设计变更管理系统，优化系统性能处理高并发场景（24K条并发+14K条×5流程通道）。在工作中，我深入研究 Spring Boot、MyBatis-Plus、MySQL 主从复制等技术，并成功解决了分布式事务、性能优化、多数据源管理等实际问题。
 
-我扎实掌握 Java 基础和 Spring 生态，熟悉微服务架构、分布式系统设计和性能优化。曾获得蓝桥杯全国总决赛国赛和 ACM 斩击杯二等奖，具备快速学习新技术并应用于实际项目的能力。
+我扎实掌握 Java 基础和 Spring 生态，熟悉微服务架构、分布式系统设计和性能优化。曾获得蓝桥杯全国总决赛国奖和 ACM 新苗杯二等奖，具备快速学习新技术并应用于实际项目的能力。
 
 期待能加入一个技术氛围浓厚的团队，与优秀的同事一起成长，用技术创造价值。`, // TODO: 详细的自我介绍，支持换行
 
@@ -31,6 +31,7 @@ export const portfolioConfig = {
   social: {
     github: '', // TODO: 如果有 GitHub 请填写
     email: '1505644813@qq.com',
+    phone: '13417191284',
     wechat: '', // 可选填
   },
 
@@ -60,12 +61,12 @@ export const portfolioConfig = {
       position: '后端研发工程师',
       period: '2025.06 - 2026.01',
       responsibilities: [
-        '主导设计受史管理系统，优化流程并支持高并发（24K条）与核心业务开发（14K条×5流程通道）',
-        '基于 Spring StateMachine 实现工作流引擎，14K条×5流程统一管理，通过 Guard 条件动态路由实现不同业务流程分发',
-        '使用 TransactionalEventListener 结合 MQTT 实现消息→MQ 持久化，防止故障导致的消息丢失，避免"保存失败但已通知"的数据不一致问题',
-        '性能优化：版文件批量上传（180KB/片）支持 MD5 秒传，meta.json 定义埋点（Redis饮和），实现 MD5 复用物理文件优化存储',
-        '实现多数据源事务回滚，通过 @DS("slave") + NOT_SUPPORTED 切换到只读副本全透明从库，避免埋库事务冲突',
-        '性能优化：版文件更新由物为差集/交集合运算，SQL 执行次数从 2N 降至 2',
+        '一个月独立完成生化设计变更管理系统后端：数据库建模（24张表）与核心业务开发（14状态×5流程通道）',
+        '工作流引擎：基于 Spring StateMachine 实现14状态×5流程统一管理，通过 Guard 条件动态路由实现不同业务流程分支',
+        '事务一致性：使用 @TransactionalEventListener(AFTER_COMMIT) 保证业务先落库、事务提交后再触发钉钉通知，避免"保存失败但已通知"问题',
+        '大文件上传：500MB分片上传（180KB/片）+ 断点续传 + MD5秒传，meta.json 记录进度，悲观锁解决并发冲突。秒传优化（同MD5复用物理文件），双重完整性验证（文件大小+MD5哈希）',
+        '多数据源事务隔离：写事务中通过 @DS("slave")+NOT_SUPPORTED 的传播机制安全查询从库，避免跨库事务冲突',
+        '性能优化：将文件更新抽象为集合运算（差集/交集），SQL 执行次数从 2N 降至 2',
       ],
       achievements: [
         '成功支持 5 分钟快速开发新流程，提升业务开发效率 60%',
@@ -74,15 +75,16 @@ export const portfolioConfig = {
       ],
     },
     {
-      company: '深德信安科技有限公司',
+      company: '深密信安科技有限公司',
       position: '后端开发工程师',
       period: '2025.03 - 2025.06',
       responsibilities: [
-        '使用 RapidOCR 将原项目二次开发，构建表格识别中间件，解决燃 OCR 引擎速度瓶颈',
-        '采用串模模式构建 OCR 引擎架构，实现 RapidOCR 与公司 JC OCR 的热切换，识别速度提升 60%+',
+        '基于 RapidOCR 开源项目二次开发，构建表格识别中间件，解决原 OCR 引擎速度瓶颈',
+        '采用策略模式重构 OCR 引擎架构，实现 RapidOCR 与公司 JC OCR 的热切换，识别速度提升 60%+',
         '设计企业级数据批量导入方案，基于多线程并行处理，数据迁移效率提升 60%',
-        '完成 EX-OA 在国产麒麟 Linux 环境下的离线部署与迁移，保障业务环境兼容',
-        '采用基于 OSS 有云装根据扫描依稀，通过搭建本地 MinIO 作真环境修复问题',
+        '完成 EX-OA 在国产麒麟 Linux 环境下的离线部署与适配，保障系统稳定运行',
+        '独立攻克客户 OBS 私有云数据扫描故障，通过搭建本地 MinIO 仿真环境精准复现问题',
+        '设计并实现基于 Python 的 OCR 性能评估框架，对 RapidOCR 多版本进行多维度性能对比分析',
       ],
       achievements: [
         'OCR 识别速度提升 60%+，支持多引擎热切换',
@@ -138,27 +140,27 @@ export const portfolioConfig = {
       ],
     },
     {
-      name: '无界基 - Spring AI 智能问答系统',
-      description: '基于 Spring AI 框架的智能问答系统，实现上下文管理和个性化响应。优化 Prompt 设计，提升 AI 模型的准确性和用户体验。',
+      name: '元元智能记账',
+      description: '基于 Spring AI 框架的智能记账系统，实现上下文管理和个性化响应。优化 Prompt 设计，提升 AI 解析用户输入的准确性。',
       tech: ['Spring Boot', 'Spring AI', 'AI/LLM'],
       image: '',
       github: '',
       demo: '',
       highlights: [
-        '使用 Spring AI 框架，设计并优化者标撑示词 Prompt，优化 AI 模型用户输入的准确性',
+        '使用 Spring AI 抽象层，设计并优化系统提示词 Prompt，优化 AI 解析用户输入的准确性',
         '实现上下文管理，确保 AI 能够理解用户历史记录并提供个性化响应',
       ],
     },
     {
-      name: '无界基 - Spring + Vue 全栈项目',
-      description: '基于 Spring Boot + Vue 的全栈 Web 应用，实现 Redis 缓存优化和 RabbitMQ 消息队列。性能优化使 QPS 峰值提升约 40%。',
+      name: '无界送',
+      description: '基于 Spring Boot + Vue 的全栈外卖平台，实现 Redis 缓存优化和 RabbitMQ 消息队列。性能优化使 QPS 峰值降低约 40%。',
       tech: ['Spring Boot', 'Vue', 'Redis', 'RabbitMQ'],
       image: '',
       github: '',
       demo: '',
       highlights: [
-        '使用 Redis 定时工厂完成数据缓存，性能较提振 QPS 峰值约 40%',
-        '集成 RabbitMQ 实现双消消息并通延，通过延迟队列动态管理未支付订单',
+        '使用 Redis 缓存热门菜品数据，降低数据库 QPS 峰值约 40%',
+        '集成 RabbitMQ 实现取消订单异步通知，通过延迟队列自动处理超时未支付订单',
       ],
     },
   ],
