@@ -6,6 +6,18 @@ import remarkGfm from 'remark-gfm'
 import 'highlight.js/styles/atom-one-dark.css'
 import Link from 'next/link'
 
+function formatDate(dateStr: string): string {
+  try {
+    const date = new Date(dateStr)
+    const year = date.getFullYear()
+    const month = String(date.getMonth() + 1).padStart(2, '0')
+    const day = String(date.getDate()).padStart(2, '0')
+    return `${year}年${month}月${day}日`
+  } catch {
+    return dateStr
+  }
+}
+
 export async function generateStaticParams() {
   const posts = getBlogPosts()
   return posts.map((post) => ({
@@ -44,7 +56,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 
         <header className="mb-12">
           <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
-            <span>{post.date}</span>
+            <span>{formatDate(post.date)}</span>
             {post.category && (
               <>
                 <span>•</span>

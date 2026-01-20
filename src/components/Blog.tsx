@@ -1,6 +1,18 @@
 import Link from 'next/link'
 import { getBlogPosts } from '@/lib/blog'
 
+function formatDate(dateStr: string): string {
+  try {
+    const date = new Date(dateStr)
+    const year = date.getFullYear()
+    const month = String(date.getMonth() + 1).padStart(2, '0')
+    const day = String(date.getDate()).padStart(2, '0')
+    return `${year}年${month}月${day}日`
+  } catch {
+    return dateStr
+  }
+}
+
 export default function Blog() {
   const posts = getBlogPosts()
 
@@ -22,7 +34,7 @@ export default function Blog() {
               className="bg-slate-800/50 rounded-xl p-6 shadow-xl border border-slate-700/50 hover:border-blue-500/50 transition-all hover:transform hover:scale-105 block"
             >
               <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
-                <span>{post.date}</span>
+                <span>{formatDate(post.date)}</span>
                 {post.category && (
                   <>
                     <span>•</span>
